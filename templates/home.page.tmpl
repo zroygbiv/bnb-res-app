@@ -1,10 +1,74 @@
 {{template "base" .}}
 
 {{define "content"}}
+<!--Image Carousel-->
+    <div
+      id="carouselExampleAutoplaying"
+      class="carousel slide carousel-fade"
+      data-bs-ride="carousel"
+    >
+      <div class="carousel-inner">
+        <div class="carousel-item active" data-bs-interval="6000">
+          <img
+            src="/static/images/house.jpeg"
+            class="d-block w-100"
+            alt="house-1"
+          />
+        </div>
+        <div class="carousel-item" data-bs-interval="6000">
+          <img
+            src="/static/images/house5.jpeg"
+            class="d-block w-100"
+            alt="house-5"
+          />
+        </div>
+        <div class="carousel-item" data-bs-interval="6000">
+          <img
+            src="/static/images/house3.jpeg"
+            class="d-block w-100"
+            alt="house-3"
+          />
+        </div>
+      </div>
+      <button
+        class="carousel-control-prev"
+        type="button"
+        data-bs-target="#carouselExampleAutoplaying"
+        data-bs-slide="prev"
+      >
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button
+        class="carousel-control-next"
+        type="button"
+        data-bs-target="#carouselExampleAutoplaying"
+        data-bs-slide="next"
+      >
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+
     <div class="container">
       <div class="row">
         <div class="col">
-          <h1>This is the home page</h1>
+          <h2 class="text-center mt-4">Your Forest Retreat</h2>
+          <p>Tucked away in the beautiful forests of the Pacfic Northwest</p>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in
+            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+            culpa qui officia deserunt mollit anim id est laborum.
+          </p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col text-center">
+          <a href="/search-availability" class="btn btn-success">Book Your Reservation</a>
         </div>
       </div>
     </div>

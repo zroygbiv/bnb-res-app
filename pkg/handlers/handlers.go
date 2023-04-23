@@ -1,10 +1,11 @@
 package handlers
 
 import (
+	"net/http"
+
 	"github.com/zroygbiv/bnb-res-app/pkg/config"
 	"github.com/zroygbiv/bnb-res-app/pkg/models"
 	"github.com/zroygbiv/bnb-res-app/pkg/render"
-	"net/http"
 )
 
 // Repository is the repository type
@@ -49,3 +50,39 @@ func (m *Repository) About(w http.ResponseWriter, r *http.Request) {
 		StringMap: stringMap,
 	})
 }
+
+// Kitchen renders kitchen page; displays form
+func (m *Repository) Kitchen(w http.ResponseWriter, r *http.Request) {
+	render.RenderTemplate(w, "kitchen.page.tmpl", &models.TemplateData{})
+}
+
+// Common renders common page; displays form
+func (m *Repository) Common(w http.ResponseWriter, r *http.Request) {
+	render.RenderTemplate(w, "common.page.tmpl", &models.TemplateData{})
+}
+
+// Bedroom renders bedroom page; displays form
+func (m *Repository) Bedroom(w http.ResponseWriter, r *http.Request) {
+	render.RenderTemplate(w, "bedroom.page.tmpl", &models.TemplateData{})
+}
+
+// Availability renders search availability page; displays form
+func (m *Repository) Availability(w http.ResponseWriter, r *http.Request) {
+	render.RenderTemplate(w, "search-availability.page.tmpl", &models.TemplateData{})
+}
+
+// Reservation renders reservation page; displays form
+func (m *Repository) Reservation(w http.ResponseWriter, r *http.Request) {
+	render.RenderTemplate(w, "make-reservation.page.tmpl", &models.TemplateData{})
+}
+
+// Reservation renders reservation page; displays form
+func (m *Repository) Contact(w http.ResponseWriter, r *http.Request) {
+	render.RenderTemplate(w, "contact.page.tmpl", &models.TemplateData{})
+}
+
+
+
+// func (m *Repository) Contact(w http.ResponseWriter, *http.Request) {
+// 	render.RenderTemplate(w, "contact.page.tmpl", &models.TemplateData{})
+// }
