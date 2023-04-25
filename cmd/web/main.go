@@ -1,9 +1,9 @@
 package main
 
 import (
-	"github.com/zroygbiv/bnb-res-app/pkg/config"
-	"github.com/zroygbiv/bnb-res-app/pkg/handlers"
-	"github.com/zroygbiv/bnb-res-app/pkg/render"
+	"github.com/zroygbiv/bnb-res-app/internal/config"
+	"github.com/zroygbiv/bnb-res-app/internal/handlers"
+	"github.com/zroygbiv/bnb-res-app/internal/render"
 	"fmt"
 	"log"
 	"net/http"

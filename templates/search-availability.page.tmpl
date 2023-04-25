@@ -4,44 +4,25 @@
 
 <div class="container">
   <div class="row">
-    <div class="col">
-
-      <h2 class="mt-4>Search Availability</h2>
-      <form action="reservation.html" method="get">
-      
-        <div class="form-row">
-          <div class="col">
-            <div class="form-group mt-5">
-              <label for="start_date">Arrival</label>
-              <input
-                type="date"
-                class="form-control"
-                id="start_date"
-                name="start_date"
-                aria-describedby="startDateHelp"
-              />
-              <small id="startDateHelp" class="form-text text-muted">MM-DD-YYYY</small>
-            </div>
-          </div>
-
-          <div class="col">
-            <div class="form-group">
-              <label for="start_date">Departure</label>
-              <input
-                type="date"
-                class="form-control"
-                id="end_date"
-                name="end_date"
-                aria-describedby="endDateHelp"
-              />
-              <small id="endDateHelp" class="form-text text-muted">MM-DD-YYYY</small>
-            </div>
-          </div>
+    <h2 class="mt-4">Search Availability</h2>
+    <div class="col-md-6">
+      <form action="/search-availability" method="post" novalidate class="needs validation">
+        <input type="hidden" name="csrf_token" value="{{.CSRFToken}}">
+        <div class="form-group">
+          <label for="start_date">Arrival</label>
+          <input type="date" class="form-control" id="start_date" name="start" aria-describedby="startDateHelp" />
         </div>
-        <button type="submit" class="btn btn-success">Search</button>
-      </form>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="end_date">Departure</label>
+          <input type="date" class="form-control" id="end_date" name="end" aria-describedby="endDateHelp" />
+        </div>
+      </div>
     </div>
-  </div>
+    <hr />
+    <button type="submit" class="btn btn-success">Search</button>
+  </form>
 </div>
 
 {{end}}
