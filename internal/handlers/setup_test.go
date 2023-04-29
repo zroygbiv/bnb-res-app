@@ -3,7 +3,8 @@ package handlers
 import (
 	"encoding/gob"
 	"fmt"
-	"html/template"
+	"text/template"
+
 	"log"
 	"net/http"
 	"path/filepath"

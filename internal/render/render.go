@@ -3,7 +3,8 @@ package render
 import (
 	"bytes"
 	"fmt"
-	"html/template"
+	"text/template"
+
 	"log"
 	"net/http"
 	"path/filepath"
