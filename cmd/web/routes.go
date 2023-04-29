@@ -22,19 +22,19 @@ func routes(app *config.AppConfig) http.Handler {
 	mux.Get("/about", handlers.Repo.About)
 
 	mux.Get("/kitchen", handlers.Repo.Kitchen)
-
 	mux.Get("/common", handlers.Repo.Common)
-
 	mux.Get("/bedroom", handlers.Repo.Bedroom)
 
-	mux.Get("/search-availability", handlers.Repo.Availability);
-	mux.Post("/search-availability", handlers.Repo.PostAvailability);
+	mux.Get("/search-availability", handlers.Repo.Availability)
+	mux.Post("/search-availability", handlers.Repo.PostAvailability)
 
-	mux.Get("/make-reservation", handlers.Repo.Reservation);
-	mux.Post("/make-reservation", handlers.Repo.PostReservation);
+	mux.Get("/make-reservation", handlers.Repo.Reservation)
+	mux.Post("/make-reservation", handlers.Repo.PostReservation)
+	mux.Get("/reservation-summary", handlers.Repo.ReservationSummary)
 
 	mux.Get("/contact", handlers.Repo.Contact);
 
+	// File server
 	fileServer := http.FileServer(http.Dir("./static/"))
 	mux.Handle("/static/*", http.StripPrefix("/static", fileServer))
 

@@ -1,13 +1,16 @@
 package main
 
 import (
-	"github.com/zroygbiv/bnb-res-app/internal/config"
-	"github.com/zroygbiv/bnb-res-app/internal/handlers"
-	"github.com/zroygbiv/bnb-res-app/internal/render"
+	"encoding/gob"
 	"fmt"
 	"log"
 	"net/http"
 	"time"
+
+	"github.com/zroygbiv/bnb-res-app/internal/config"
+	"github.com/zroygbiv/bnb-res-app/internal/handlers"
+	"github.com/zroygbiv/bnb-res-app/internal/models"
+	"github.com/zroygbiv/bnb-res-app/internal/render"
 
 	"github.com/alexedwards/scs/v2"
 )
@@ -18,8 +21,27 @@ var session *scs.SessionManager
 
 // main is the main application
 func main() {
+	
+	err := run()
+	if err != nil {
+		log.Fatal(err)
+	}
 
-	// change this to true when in production
+	fmt.Println(fmt.Sprintf("Starting application on port %s", portNumber))
+
+	srv := &http.Server {
+		Addr:    portNumber,
+		Handler: routes(&app),
+	}
+
+	err = srv.ListenAndServe()
+	log.Fatal(err)
+}
+
+func run() error {
+	gob.Register(models.Reservation{})
+
+	// Change this to true when in production
 	app.InProduction = false
 
 	session = scs.New()
@@ -33,6 +55,7 @@ func main() {
 	tc, err := render.CreateTemplateCache()
 	if err != nil {
 		log.Fatal("cannot create template cache")
+		return err
 	}
 
 	app.TemplateCache = tc
@@ -40,15 +63,7 @@ func main() {
 
 	repo := handlers.NewRepo(&app)
 	handlers.NewHandlers(repo)
-	render.NewTemplates(&app)
-
-	fmt.Println(fmt.Sprintf("Starting application on port %s", portNumber))
-
-	srv := &http.Server {
-		Addr:    portNumber,
-		Handler: routes(&app),
-	}
-
-	err = srv.ListenAndServe()
-	log.Fatal(err)
+	render.NewTemplates(&app)	
+	
+	return nil
 }
